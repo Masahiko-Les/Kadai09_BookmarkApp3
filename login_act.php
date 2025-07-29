@@ -1,4 +1,8 @@
 <?php
+//エラー探し
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 //セッションスタート！
 session_start();
 
@@ -30,8 +34,8 @@ if( $val && password_verify($lpw, $val["lpw"]) ){
   $_SESSION["name"] = $val["name"];
   $_SESSION["lid"] = $val["lid"]; 
   redirect("index.php");
-  echo "LOGIN SUCCESS";
+  // echo "LOGIN SUCCESS";
 }else{
     redirect("login.php");
-    echo "LOGIN ERROR";
+    // echo "LOGIN ERROR";
 }

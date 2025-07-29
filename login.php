@@ -1,4 +1,10 @@
 <!-- login.php -->
+<?php
+//エラー探し
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>

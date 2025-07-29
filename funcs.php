@@ -2,6 +2,11 @@
 //共通に使う関数を記述
 //XSS対応（ echoする場所で使用！それ以外はNG ）
 
+//session_start()が重複して実行されるとさくらで警告が出る
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 function h($str){
     return htmlspecialchars($str, ENT_QUOTES, "UTF-8");
 }
@@ -10,7 +15,7 @@ function db_conn(){
     try {
     //ID:'root', Password: xamppは 空白 ''
     // ここはデータベース名！！！テーブル名と違う！！
-    $pdo = new PDO('mysql:dbname=●●;charset=utf8;host=●●','●●','●●');// データベース情報！！！！！！
+    $pdo = new PDO('mysql:dbname=●●;charset=utf8;host=●●','●●','●●');// データベース情報隠した方がいい？
             return $pdo;
     } catch (PDOException $e) {
         exit('DBConnectError:'.$e->getMessage());
